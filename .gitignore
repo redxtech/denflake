@@ -1,0 +1,6 @@
+result
+.direnv
+.devenv
+
+# vm images
+*.qcow2
