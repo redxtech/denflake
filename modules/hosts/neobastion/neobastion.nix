@@ -32,6 +32,5 @@
       {
         home.packages = [ pkgs.vim ];
       };
-
   };
 }

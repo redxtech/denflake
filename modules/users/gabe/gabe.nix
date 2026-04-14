@@ -11,11 +11,39 @@
       den.aspects.bar
     ];
 
-    nixos = {
-      users.users.gabe = {
-        openssh.authorizedKeys.keys = [ (builtins.readFile ./ssh.pub) ];
+    nixos =
+      { config, ... }:
+      {
+        users.mutableUsers = false;
+        users.users.gabe = {
+          description = "Gabe Dunn";
+          isNormalUser = true;
+          hashedPasswordFile = config.sops.secrets.gabe-pw.path;
+          openssh.authorizedKeys.keys = [ (builtins.readFile ./ssh.pub) ];
+
+          extraGroups =
+            let
+              inherit (builtins) filter hasAttr;
+              ifTheyExist = groups: filter (group: hasAttr group config.users.groups) groups;
+            in
+            (
+              [
+                "video"
+                "audio"
+              ]
+              ++ ifTheyExist [
+                "data"
+                "docker"
+                "git"
+                "hass"
+                "input"
+                "plugdev"
+              ]
+            );
+        };
+
+        sops.secrets.gabe-pw.neededForUsers = true;
       };
-    };
 
     homeManager =
       { pkgs, ... }:
