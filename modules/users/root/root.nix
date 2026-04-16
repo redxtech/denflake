@@ -4,10 +4,7 @@
 
 {
   den.aspects.root = {
-    includes = [
-      den.provides.define-user
-      (den.provides.user-shell "fish")
-    ];
+    includes = [ (den.provides.user-shell "fish") ];
 
     nixos =
       { config, ... }:

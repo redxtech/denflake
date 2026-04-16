@@ -10,7 +10,6 @@
 
   den.aspects.voyager = {
     includes = [
-      den.provides.hostname
       den.aspects.base
       den.aspects.display-manager
       den.aspects.window-manager

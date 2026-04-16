@@ -5,7 +5,6 @@
 {
   den.aspects.gabe = {
     includes = [
-      den.provides.define-user
       den.provides.primary-user
       (den.provides.user-shell "fish")
       den.aspects.bar
