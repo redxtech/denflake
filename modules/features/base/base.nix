@@ -6,11 +6,10 @@
     {
       includes = [
         den.aspects.cli
+        den.aspects.root
         den.aspects.secrets
         den.aspects.ssh
         den.aspects.tailscale
-
-        den.aspects.root
 
         (den.provides.unfree [
           "steam-unwrapped"

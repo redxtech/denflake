@@ -1,6 +1,6 @@
 { inputs, self, ... }:
 {
-  den.aspects.voyager.nixos = {
+  den.aspects.voyager-fs.nixos = {
     imports = [ inputs.disko.nixosModules.disko ];
 
     disko.devices.disk.main = {

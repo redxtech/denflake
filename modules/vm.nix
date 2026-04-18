@@ -5,7 +5,7 @@
 {
 
   perSystem =
-    { pkgs, ... }:
+    { pkgs, lib, ... }:
     {
       packages.vm = pkgs.writeShellApplication {
         name = "vm";
@@ -13,9 +13,11 @@
           let
             machine = "voyager";
             host = inputs.self.nixosConfigurations.${machine}.config;
+            hasDisplay = true;
+            cliArgs = lib.optionalString hasDisplay "-device virtio-vga-gl -display sdl,gl=on";
           in
           ''
-            ${host.system.build.vm}/bin/run-${host.networking.hostName}-vm "$@"
+            ${host.system.build.vm}/bin/run-${host.networking.hostName}-vm ${cliArgs} "$@"
           '';
       };
     };
