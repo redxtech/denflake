@@ -7,6 +7,7 @@
       den.aspects.root
       den.aspects.secrets
       den.aspects.ssh
+      den.aspects.style
       den.aspects.tailscale
 
       (den.provides.unfree [

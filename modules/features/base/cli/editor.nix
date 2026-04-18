@@ -46,13 +46,6 @@
           settings = {
             frame = "none";
             neovim-bin = lib.getExe config.tu.out.packages.tu;
-            font = {
-              normal = [
-                "Aporetic Sans Mono"
-                "Symbols Nerd Font"
-              ];
-              size = 14.0;
-            };
           };
         };
 
