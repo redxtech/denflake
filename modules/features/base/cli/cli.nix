@@ -1,7 +1,19 @@
-{ inputs, self, ... }:
+{
+  inputs,
+  self,
+  den,
+  ...
+}:
 
 {
   den.aspects.cli = {
+    includes = [
+      den.aspects.editor
+      den.aspects.fish-shell
+      den.aspects.git
+      den.aspects.gpg
+    ];
+
     nixos =
       { config, pkgs, ... }:
       {

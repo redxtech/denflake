@@ -55,5 +55,9 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    tu = {
+      url = "github:redxtech/tu";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 }
