@@ -4,8 +4,6 @@
 
 {
   den.aspects.root = {
-    includes = [ (den.provides.user-shell "fish") ];
-
     nixos =
       { config, ... }:
       {

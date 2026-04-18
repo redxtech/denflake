@@ -15,13 +15,7 @@
       };
 
     homeManager = {
-      imports = [ inputs.niri.homeModules.niri ];
-
-      programs.niri = {
-        enable = true;
-
-        # settings = { };
-      };
+      # programs.niri.settings = { };
     };
   };
 

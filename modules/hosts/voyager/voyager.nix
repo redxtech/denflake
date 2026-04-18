@@ -10,9 +10,8 @@
 
   den.aspects.voyager = {
     includes = [
-      den.aspects.base
-      den.aspects.display-manager
-      den.aspects.window-manager
+      den.aspects.workstation
+      den.aspects.gpu
     ];
 
     nixos = {

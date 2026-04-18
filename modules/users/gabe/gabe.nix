@@ -5,9 +5,10 @@
 {
   den.aspects.gabe = {
     includes = [
-      den.provides.primary-user
-      (den.provides.user-shell "fish")
-      den.aspects.bar
+      den._.primary-user
+      (den._.user-shell "fish")
+
+      den._.host-aspects
     ];
 
     nixos =
@@ -50,7 +51,6 @@
         home.packages = with pkgs; [
           btop
           git
-          neovim
 
           alacritty
           fuzzel

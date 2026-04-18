@@ -11,7 +11,8 @@
         name = "vm";
         text =
           let
-            host = inputs.self.nixosConfigurations.neobastion.config;
+            machine = "voyager";
+            host = inputs.self.nixosConfigurations.${machine}.config;
           in
           ''
             ${host.system.build.vm}/bin/run-${host.networking.hostName}-vm "$@"
