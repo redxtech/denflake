@@ -10,7 +10,7 @@ keys:
     - &neobastion age1j7tftyavjrwa94v6fjmxnyczuclevegplpwq5cx2h83tr222jdns3kayst
 
 creation_rules:
-  - path_regex: secrets/hosts/common/(\w+/)*secrets\.(ya?ml|json|env|ini)$
+  - path_regex: secrets/hosts/common/(\w+/)*.*\.(ya?ml|json|env|ini)$
     key_groups:
       - age:
           - *gabe
@@ -20,35 +20,35 @@ creation_rules:
           - *quasar
           - *neobastion
 
-  - path_regex: secrets/hosts/bastion/(\w+/)*secrets\.(ya?ml|json|env|ini)$
+  - path_regex: secrets/hosts/bastion/(\w+/)*.*\.(ya?ml|json|env|ini)$
     key_groups:
       - age:
           - *gabe
           - *yubikey
           - *bastion
 
-  - path_regex: secrets/hosts/neobastion/(\w+/)*secrets\.(ya?ml|json|env|ini)$
+  - path_regex: secrets/hosts/neobastion/(\w+/)*.*\.(ya?ml|json|env|ini)$
     key_groups:
       - age:
           - *gabe
           - *yubikey
           - *neobastion
 
-  - path_regex: secrets/hosts/voyager/(\w+/)*secrets\.(ya?ml|json|env|ini)$
+  - path_regex: secrets/hosts/voyager/(\w+/)*.*\.(ya?ml|json|env|ini)$
     key_groups:
       - age:
           - *gabe
           - *yubikey
           - *voyager
 
-  - path_regex: secrets/hosts/quasar/(\w+/)*secrets\.(ya?ml|json|env|ini)$
+  - path_regex: secrets/hosts/quasar/(\w+/)*.*\.(ya?ml|json|env|ini)$
     key_groups:
       - age:
           - *gabe
           - *yubikey
           - *quasar
 
-  - path_regex: secrets/users/gabe/(\w+/)*secrets\.(ya?ml|json|env|ini)$
+  - path_regex: secrets/users/gabe/(\w+/)*.*\.(ya?ml|json|env|ini)$
     key_groups:
       - age:
           - *gabe
