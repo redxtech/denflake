@@ -16,5 +16,10 @@
       # include workstation-only sub-aspects
       den.aspects.editor._.for-workstation
     ];
+
+    # TODO: move to own aspect
+    homeManager = {
+      programs.kitty.enable = true;
+    };
   };
 }
