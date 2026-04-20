@@ -8,6 +8,9 @@
     den.provides.hostname
     den.provides.inputs'
     den.provides.self'
+
+    # needed to propagate host settings to nixos and home-manager
+    den.aspects.host-settings
   ];
 
   # enable hm by default
