@@ -6,20 +6,21 @@
       config,
       pkgs,
       lib,
+      host,
       ...
     }:
     let
-      inherit (lib) optionals optionalString;
-      hasGUI = true; # TODO: make this conditional
+      inherit (host.settings.base) hasDisplay;
+
       pinentryPkgs =
-        (optionals hasGUI (
+        (lib.optionals hasDisplay (
           with pkgs;
           [
             gcr
             pinentry-gnome3
           ]
         ))
-        ++ (optionals (!hasGUI) (with pkgs; [ pinentry-curses ]));
+        ++ (lib.optionals (!hasDisplay) (with pkgs; [ pinentry-curses ]));
 
       # TODO: remove after https://github.com/nix-community/home-manager/pull/5720 is merged
       agentCfg = config.services.gpg-agent;
@@ -31,11 +32,11 @@
         GPG_TTY="$(tty)"
         export GPG_TTY
       ''
-      + optionalString agentCfg.enableSshSupport gpgSshSupportStr;
+      + lib.optionalString agentCfg.enableSshSupport gpgSshSupportStr;
       gpgFishInitStr = ''
         set -gx GPG_TTY (tty)
       ''
-      + optionalString agentCfg.enableSshSupport gpgSshSupportStr;
+      + lib.optionalString agentCfg.enableSshSupport gpgSshSupportStr;
     in
     {
       home.packages = with pkgs; [ gpgme ] ++ pinentryPkgs;
@@ -44,7 +45,7 @@
         enable = true;
         enableSshSupport = true;
         sshKeys = [ "11148591F2B2026E9B2227BD5C7A1973A2838278" ];
-        pinentry.package = if hasGUI then pkgs.pinentry-gnome3 else pkgs.pinentry-curses;
+        pinentry.package = if hasDisplay then pkgs.pinentry-gnome3 else pkgs.pinentry-curses;
         enableExtraSocket = true;
 
         enableBashIntegration = false;

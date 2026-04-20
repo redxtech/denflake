@@ -6,7 +6,13 @@
 }:
 
 {
-  den.hosts.x86_64-linux.voyager.users.gabe = { };
+  den.hosts.x86_64-linux.voyager = {
+    users.gabe = { };
+
+    settings = {
+      base.hasDisplay = true;
+    };
+  };
 
   den.aspects.voyager = {
     includes = [

@@ -1,4 +1,4 @@
-{ den, ... }:
+{ den, lib, ... }:
 
 {
   den.aspects.base = {
@@ -17,6 +17,8 @@
         "xkcd-font"
       ])
     ];
+
+    settings.hasDisplay = lib.mkEnableOption "Whether the host has a display";
 
     nixos = {
       services.userborn.enable = true;
