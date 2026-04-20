@@ -22,7 +22,7 @@
   };
 
   inputs = {
-    den.url = "github:vic/den";
+    den.url = "github:denful/den";
     deploy-rs = {
       url = "github:serokell/deploy-rs";
       inputs.nixpkgs.follows = "nixpkgs";
