@@ -130,7 +130,7 @@
               wallpaper = exported.wallpaper;
               appLauncher = exported.appLauncher // {
                 terminalCommand = (lib.getExe config.programs.kitty.package) + " -e";
-                screenshotAnnotationTool = (lib.getExe pkgs.satty) + " -f";
+                screenshotAnnotationTool = (lib.getExe pkgs.satty) + " -f -";
                 clipboardWatchTextCommand = wlPasteCmd "text";
                 clipboardWatchImageCommand = wlPasteCmd "image";
               };
@@ -151,7 +151,7 @@
               nightLight = exported.nightLight;
               hooks = exported.hooks;
               plugins = exported.plugins;
-              idle = exported.idle;
+              idle = exported.idle; # TODO: set screenOffCommand to niri's power-off-monitors
               desktopWidgets = exported.desktopWidgets;
             };
         };

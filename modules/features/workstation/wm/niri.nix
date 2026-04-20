@@ -11,7 +11,7 @@
 
         # configure greetd to use niri
         services.greetd.settings.default_session.command =
-          "${pkgs.tuigreet}/bin/tuigreet --time --remember --cmd niri";
+          "${pkgs.tuigreet}/bin/tuigreet --time --remember --cmd niri-session";
       };
 
     homeManager = {
