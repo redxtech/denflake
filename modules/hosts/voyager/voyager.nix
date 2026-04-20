@@ -6,7 +6,13 @@
 }:
 
 {
-  den.hosts.x86_64-linux.voyager.users.gabe = { };
+  den.hosts.x86_64-linux.voyager = {
+    users.gabe = { };
+
+    settings.monitors = {
+      enable = true;
+    };
+  };
 
   den.aspects.voyager = {
     includes = [
@@ -16,6 +22,8 @@
 
       # until no longer on a VM
       den.aspects.vm
+
+      den.aspects.monitors
     ];
 
     nixos = {
