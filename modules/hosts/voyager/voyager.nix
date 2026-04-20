@@ -29,6 +29,7 @@
       # https://github.com/nix-community/home-manager/issues/6364#issuecomment-2965010115
       # TODO: remove this when not testing in a VM
       home-manager.useUserPackages = true;
+      home-manager.backupFileExtension = "bak";
     };
 
   };

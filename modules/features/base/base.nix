@@ -4,6 +4,7 @@
   den.aspects.base = {
     includes = [
       den.aspects.cli
+      den.aspects.nix-config
       den.aspects.root
       den.aspects.secrets
       den.aspects.ssh
