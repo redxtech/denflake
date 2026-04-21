@@ -16,6 +16,7 @@
 
     homeManager =
       {
+        inputs',
         config,
         pkgs,
         lib,
@@ -25,8 +26,6 @@
         imports = [ inputs.noctalia.homeModules.default ];
 
         home.packages = with pkgs; [
-          inputs.noctalia.packages.${stdenv.hostPlatform.system}.default
-
           fastfetch # for system information
           gpu-screen-recorder # for screen recorder plugin
           qt6.qtwebsockets # for home assistant plugin
@@ -34,6 +33,8 @@
 
         programs.noctalia-shell = {
           enable = true;
+
+          package = inputs'.noctalia.packages.default;
 
           plugins = {
             sources = [
