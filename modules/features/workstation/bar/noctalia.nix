@@ -157,7 +157,9 @@
             };
         };
 
-        programs.niri.settings.spawn-at-startup = [ { argv = [ "noctalia-shell" ]; } ];
+        programs.niri.settings.spawn-at-startup = [
+          { argv = [ (lib.getExe config.programs.noctalia-shell.package) ]; }
+        ];
 
         sops.secrets = {
           github-feed = {

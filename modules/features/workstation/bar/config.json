@@ -222,15 +222,6 @@
 						"id": "plugin:tailscale"
 					},
 					{
-						"deviceNativePath": "__default__",
-						"displayMode": "graphic-clean",
-						"hideIfIdle": false,
-						"hideIfNotDetected": true,
-						"id": "Battery",
-						"showNoctaliaPerformance": false,
-						"showPowerProfiles": false
-					},
-					{
 						"displayMode": "alwaysShow",
 						"iconColor": "none",
 						"id": "Volume",
@@ -245,6 +236,15 @@
 						"id": "Clock",
 						"tooltipFormat": "dddd, MMMM dd - HH:mm",
 						"useCustomFont": false
+					},
+					{
+						"deviceNativePath": "__default__",
+						"displayMode": "graphic",
+						"hideIfIdle": false,
+						"hideIfNotDetected": true,
+						"id": "Battery",
+						"showNoctaliaPerformance": true,
+						"showPowerProfiles": true
 					},
 					{
 						"iconColor": "error",
@@ -745,8 +745,8 @@
 		"idle": {
 			"enabled": true,
 			"screenOffTimeout": 600,
-			"lockTimeout": 660,
-			"suspendTimeout": 1800,
+			"lockTimeout": 300,
+			"suspendTimeout": 0,
 			"fadeDuration": 5,
 			"screenOffCommand": "",
 			"lockCommand": "",
