@@ -3,8 +3,8 @@
 {
   # provide additional options to any systems running build-vm
   den.aspects.vm.nixos.virtualisation.vmVariant.virtualisation = {
-    diskSize = 20480;
-    memorySize = 4096;
+    diskSize = 40960;
+    memorySize = 8192;
     cores = 4;
 
     qemu.options = [

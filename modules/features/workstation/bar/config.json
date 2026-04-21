@@ -65,16 +65,6 @@
 					},
 					{
 						"defaultSettings": {
-							"customColor": "none",
-							"showConditionIcon": true,
-							"showTempUnit": true,
-							"showTempValue": true,
-							"tooltipOption": "everything"
-						},
-						"id": "plugin:weather-indicator"
-					},
-					{
-						"defaultSettings": {
 							"colorizationBadge": "Primary",
 							"colorizationBadgeText": "Primary",
 							"colorizationEnabled": false,
@@ -114,10 +104,10 @@
 						"followFocusedScreen": false,
 						"fontWeight": "bold",
 						"groupedBorderOpacity": 1,
-						"hideUnoccupied": false,
+						"hideUnoccupied": true,
 						"iconScale": 0.8,
 						"id": "Workspace",
-						"labelMode": "none",
+						"labelMode": "index",
 						"occupiedColor": "secondary",
 						"pillSize": 0.6,
 						"showApplications": false,
@@ -450,7 +440,7 @@
 			"enableWindowsSearch": true,
 			"enableSessionSearch": true,
 			"ignoreMouseInput": false,
-			"screenshotAnnotationTool": "satty -f",
+			"screenshotAnnotationTool": "satty -f -",
 			"overviewLayer": false,
 			"density": "default"
 		},
@@ -777,57 +767,6 @@
 					"widgets": []
 				}
 			]
-		}
-	},
-	"state": {
-		"doNotDisturb": false,
-		"noctaliaPerformanceMode": false,
-		"barVisible": true,
-		"openedPanel": "",
-		"lockScreenActive": false,
-		"wallpapers": {
-			"DP-1": "/home/gabe/Pictures/Wallpaper/cloud_shapes_4k.png",
-			"DP-2": "/home/gabe/Pictures/Wallpaper/cloud_shapes_4k.png"
-		},
-		"desktopWidgetsEditMode": false,
-		"display": {
-			"DP-1": {
-				"name": "DP-1",
-				"scale": 1,
-				"width": 2560,
-				"height": 1440,
-				"refresh_rate": 144,
-				"x": 0,
-				"y": 0,
-				"active_workspace": 5,
-				"vrr": false,
-				"focused": true
-			},
-			"DP-2": {
-				"name": "DP-2",
-				"scale": 1,
-				"width": 2560,
-				"height": 1440,
-				"refresh_rate": 143.998,
-				"x": 2560,
-				"y": 0,
-				"active_workspace": 8,
-				"vrr": false,
-				"focused": false
-			}
-		},
-		"notificationsState": {
-			"lastSeenTs": 1776644069000
-		},
-		"changelogState": {
-			"lastSeenVersion": "v4.7.2"
-		},
-		"colorSchemesList": {
-			"schemes": [],
-			"timestamp": 0
-		},
-		"ui": {
-			"settingsSidebarExpanded": true
 		}
 	}
 }
