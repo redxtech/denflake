@@ -11,6 +11,7 @@
 
     settings = {
       base.hasDisplay = true;
+      workstation.isLaptop = false;
       monitors = {
         enable = true;
         monitors =

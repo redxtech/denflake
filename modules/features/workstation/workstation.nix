@@ -1,12 +1,9 @@
-{
-  inputs,
-  self,
-  den,
-  ...
-}:
+{ den, lib, ... }:
 
 {
   den.aspects.workstation = {
+    settings.isLaptop = lib.mkEnableOption "Whether the host is a laptop";
+
     includes = [
       den.aspects.base
       den.aspects.display-manager

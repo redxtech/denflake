@@ -18,6 +18,7 @@
       {
         inputs',
         config,
+        host,
         pkgs,
         lib,
         ...
@@ -135,9 +136,37 @@
                 clipboardWatchTextCommand = wlPasteCmd "text";
                 clipboardWatchImageCommand = wlPasteCmd "image";
               };
-              controlCenter = exported.controlCenter;
+              controlCenter = exported.controlCenter // {
+                cards = [
+                  {
+                    enabled = true;
+                    id = "profile-card";
+                  }
+                  {
+                    enabled = true;
+                    id = "shortcuts-card";
+                  }
+                  {
+                    enabled = true;
+                    id = "audio-card";
+                  }
+                  {
+                    enabled = host.settings.workstation.isLaptop;
+                    id = "brightness-card";
+                  }
+                  {
+                    enabled = true;
+                    id = "weather-card";
+                  }
+                  {
+                    enabled = true;
+                    id = "media-sysmon-card";
+                  }
+                ];
+              };
               systemMonitor = exported.systemMonitor // {
                 externalMonitor = kittyFloat "btop";
+                enableDgpuMonitoring = !host.settings.workstation.isLaptop;
               };
               noctaliaPerformance = exported.noctaliaPerformance;
               dock = dockWithoutStylix;
