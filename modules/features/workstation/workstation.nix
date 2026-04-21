@@ -38,6 +38,7 @@
           qimgv # image viewer
           satty # image editor
           spotify # music player
+          thunar # file manager
           vesktop # discord client
         ];
       };
