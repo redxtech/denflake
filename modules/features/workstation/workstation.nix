@@ -16,6 +16,8 @@
       den.aspects.portals
       den.aspects.screenshot
 
+      den.aspects.terminal
+
       # include workstation-only sub-aspects
       den.aspects.editor._.for-workstation
     ];
@@ -24,16 +26,6 @@
     homeManager =
       { config, pkgs, ... }:
       {
-        programs.kitty.enable = true;
-        programs.foot.enable = true;
-        programs.foot.server.enable = true;
-        programs.foot.settings.main.font =
-          let
-            fonts = config.stylix.fonts;
-            size = toString fonts.sizes.terminal;
-          in
-          lib.mkForce "${fonts.monospace.name}:size=${size}, Symbols Nerd Font:size=${size}";
-
         xdg.enable = true;
 
         home.packages = with pkgs; [

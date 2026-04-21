@@ -96,7 +96,7 @@
 
               animations.slowdown = 0.75;
               animations.screenshot-ui-open.enable = false;
-              overview.backdrop-color = config.lib.stylix.colors.base00;
+              overview.backdrop-color = config.lib.stylix.colors.withHashtag.base00;
 
               # TODO: wait until PR is merged and flake options are updated (https://github.com/sodiboo/niri-flake/pull/1548)
 
