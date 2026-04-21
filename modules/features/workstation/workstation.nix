@@ -8,12 +8,13 @@
       den.aspects.base
       den.aspects.display-manager
       den.aspects.window-manager
-      den.aspects.monitors
-      den.aspects.bar
-      den.aspects.screenshot
-      den.aspects.portals
 
+      den.aspects.audio
       den.aspects.autostart
+      den.aspects.bar
+      den.aspects.monitors
+      den.aspects.portals
+      den.aspects.screenshot
 
       # include workstation-only sub-aspects
       den.aspects.editor._.for-workstation
