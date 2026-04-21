@@ -10,6 +10,7 @@
         stylix = {
           enable = true;
           base16Scheme = "${pkgs.base16-schemes}/share/themes/dracula.yaml";
+          polarity = "dark";
 
           cursor = {
             name = "Vimix-cursors";
@@ -49,6 +50,8 @@
           opacity.terminal = 0.9;
         };
 
+        fonts.fontDir.enable = true;
+
         # extra fonts
         environment.systemPackages = with pkgs; [
           cantarell-fonts
@@ -60,7 +63,19 @@
 
     # silence the warning
     # TODO: see if it works with setting this to config.gtk.theme
-    homeManager.gtk.gtk4.theme = null;
+    homeManager =
+      { pkgs, ... }:
+      {
+        gtk.gtk4.theme = null;
+
+        fonts.fontconfig.antialiasing = true;
+        home.packages = with pkgs; [
+          cantarell-fonts
+          inter
+          xkcd-font
+          nerd-fonts.symbols-only
+        ];
+      };
   };
 
   flake-file.inputs.stylix = {

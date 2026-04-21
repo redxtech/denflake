@@ -21,11 +21,17 @@
 
     # TODO: move to own aspect
     homeManager =
-      { pkgs, ... }:
+      { config, pkgs, ... }:
       {
         programs.kitty.enable = true;
         programs.foot.enable = true;
         programs.foot.server.enable = true;
+        programs.foot.settings.main.font =
+          let
+            fonts = config.stylix.fonts;
+            size = toString fonts.sizes.terminal;
+          in
+          lib.mkForce "${fonts.monospace.name}:size=${size}, Symbols Nerd Font:size=${size}";
 
         xdg.enable = true;
 

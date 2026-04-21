@@ -1,9 +1,4 @@
-{
-  inputs,
-  self,
-  den,
-  ...
-}:
+{ inputs, den, ... }:
 
 {
   den.hosts.x86_64-linux.voyager = {
