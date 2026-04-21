@@ -11,6 +11,7 @@
       den.aspects.base
       den.aspects.display-manager
       den.aspects.window-manager
+      den.aspects.monitors
       den.aspects.bar
 
       # include workstation-only sub-aspects
