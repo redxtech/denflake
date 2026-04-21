@@ -12,6 +12,7 @@
       den.aspects.fish-shell
       den.aspects.git
       den.aspects.gpg
+      den.aspects.prompt
     ];
 
     nixos =
