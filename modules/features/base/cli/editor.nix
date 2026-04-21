@@ -11,7 +11,7 @@
           sessionVariables = {
             EDITOR = "tu";
             VISUAL = "tu";
-            PAGER = "tu +Man!";
+            # PAGER = "tu +Man!";
           };
 
           packages = with pkgs; [ nil ];
@@ -34,7 +34,6 @@
           withPython3 = true;
           withRuby = true;
         };
-
       };
 
     # only include this if the host imports the sub-aspect

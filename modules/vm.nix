@@ -3,6 +3,7 @@
 {
   # provide additional options to any systems running build-vm
   den.aspects.vm.nixos.virtualisation.vmVariant.virtualisation = {
+    diskSize = 20480;
     memorySize = 4096;
     cores = 4;
 

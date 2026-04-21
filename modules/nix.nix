@@ -39,7 +39,7 @@
         };
 
         nixpkgs.config = {
-          # allowUnfree = true; # TODO: re-enable when trying to fix a conflict
+          allowUnfree = true;
           nvidia.acceptLicense = true;
         };
       };
