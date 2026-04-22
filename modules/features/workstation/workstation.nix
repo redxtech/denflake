@@ -12,6 +12,7 @@
       den.aspects.audio
       den.aspects.autostart
       den.aspects.bar
+      den.aspects.default-apps
       den.aspects.flatpak
       den.aspects.monitors
       den.aspects.portals
@@ -23,8 +24,6 @@
       # include workstation-only sub-aspects
       den.aspects.editor._.for-workstation
     ];
-
-    # TODO: add default-apps
 
     # TODO: add more apps
 
