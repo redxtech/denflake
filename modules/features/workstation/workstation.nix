@@ -17,6 +17,7 @@
       den.aspects.portals
       den.aspects.screenshot
 
+      den.aspects.spotify
       den.aspects.terminal
 
       # include workstation-only sub-aspects
@@ -49,7 +50,6 @@
           nautilus # file manager
           qimgv # image viewer
           satty # image editor
-          spotify # music player
           thunar # file manager
           vesktop # discord client
         ];

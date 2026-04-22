@@ -1,9 +1,12 @@
-{ inputs, self, ... }:
-
 {
   den.aspects.autostart = {
     homeManager =
-      { pkgs, lib, ... }:
+      {
+        config,
+        pkgs,
+        lib,
+        ...
+      }:
       {
         home.packages = with pkgs; [ dex ];
 
@@ -11,7 +14,7 @@
           enable = true;
           entries = with pkgs; [
             "${vesktop}/share/applications/vesktop.desktop"
-            # "${spotify}/share/applications/spotify.desktop"
+            # "${config.programs.spicetify.spicedSpotify}/share/applications/spotify.desktop"
           ];
         };
 
