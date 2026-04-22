@@ -22,12 +22,6 @@
         programs.niri.settings.spawn-at-startup = [
           {
             argv = [
-              (lib.getExe pkgs.thunar)
-              "--daemon"
-            ];
-          }
-          {
-            argv = [
               (lib.getExe pkgs.sftpman)
               "mount_all"
             ];

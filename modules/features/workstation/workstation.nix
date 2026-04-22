@@ -20,6 +20,9 @@
 
       den.aspects.spotify
       den.aspects.terminal
+      den.aspects.file-browser
+      den.aspects.image-viewer
+      den.aspects.video-player
 
       # include workstation-only sub-aspects
       den.aspects.editor._.for-workstation
@@ -28,11 +31,7 @@
     # TODO: add more apps
 
     # feh
-    # mpv
-    # nemo
     # rofi
-    # spotify
-    # thunar
     # thunderbird
     # zathura
     # playerctld
@@ -45,11 +44,7 @@
 
         home.packages = with pkgs; [
           # TODO: add more to here
-          nemo-with-extensions # file manager
-          nautilus # file manager
-          qimgv # image viewer
           satty # image editor
-          thunar # file manager
           vesktop # discord client
         ];
       };
