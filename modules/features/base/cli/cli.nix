@@ -8,12 +8,34 @@
 {
   den.aspects.cli = {
     includes = [
+      den.aspects.cli-config
       den.aspects.editor
       den.aspects.fish-shell
       den.aspects.git
       den.aspects.gpg
+      den.aspects.nix-index
       den.aspects.prompt
     ];
+
+    # TODO: add more cli aspects
+
+    # - bat
+    # - btop
+    # - cava
+    # - direnv
+    # - eza
+    # - fzf
+    # - htop
+    # - jq
+    # - pyenv
+    # - ripgrep
+    # - sftpman
+    # - spotify-player
+    # - ssh
+    # - tealdeer
+    # - tmux
+    # - yazi
+    # - yt-dlp
 
     nixos =
       { config, pkgs, ... }:

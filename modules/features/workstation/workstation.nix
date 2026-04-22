@@ -22,6 +22,20 @@
       den.aspects.editor._.for-workstation
     ];
 
+    # TODO: add default-apps
+
+    # TODO: add more apps
+
+    # feh
+    # mpv
+    # nemo
+    # rofi
+    # spotify
+    # thunar
+    # thunderbird
+    # zathura
+    # playerctld
+
     # TODO: move to own aspect
     homeManager =
       { config, pkgs, ... }:
@@ -29,6 +43,7 @@
         xdg.enable = true;
 
         home.packages = with pkgs; [
+          # TODO: add more to here
           nemo-with-extensions # file manager
           nautilus # file manager
           qimgv # image viewer
