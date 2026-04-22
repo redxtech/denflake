@@ -12,6 +12,7 @@
       den.aspects.audio
       den.aspects.autostart
       den.aspects.bar
+      den.aspects.flatpak
       den.aspects.monitors
       den.aspects.portals
       den.aspects.screenshot
