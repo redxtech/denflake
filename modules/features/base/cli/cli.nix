@@ -8,29 +8,17 @@
       den.aspects.fish-shell
       den.aspects.git
       den.aspects.gpg
+      den.aspects.multiplexer
       den.aspects.nix-index
       den.aspects.prompt
+      den.aspects.yazi
     ];
 
     # TODO: add more cli aspects
 
-    # - bat
-    # - btop
-    # - cava
-    # - direnv
-    # - eza
-    # - fzf
-    # - htop
-    # - jq
-    # - pyenv
-    # - ripgrep
+    # - pyenv # TODO: move to dev aspect
     # - sftpman
-    # - spotify-player
     # - ssh
-    # - tealdeer
-    # - tmux
-    # - yazi
-    # - yt-dlp
 
     nixos =
       { config, pkgs, ... }:
@@ -270,6 +258,10 @@
         programs.bat.enable = true;
         programs.bash.enable = true;
         programs.fd.enable = true;
+        programs.htop.enable = true;
+        programs.jq.enable = true;
+        programs.ripgrep.enable = true;
+        programs.ripgrep-all.enable = true;
         programs.zoxide.enable = true;
 
         programs.btop = {
@@ -341,6 +333,38 @@
         programs.pay-respects = {
           enable = true;
           enableFishIntegration = true;
+        };
+
+        programs.tealdeer = {
+          enable = true;
+          settings = {
+            display.compact = false;
+            updates = {
+              auto_update = true;
+              auto_update_interval_hours = 168;
+            };
+          };
+        };
+
+        programs.yt-dlp = {
+          enable = true;
+
+          settings = {
+            output = "'[%(release_date>%Y-%m-%d,upload_date>%Y-%m-%d|Unknown)s] %(creator)s - %(title)s.%(ext)s'";
+            # format = "best";
+            concurrent-fragments = 5;
+            write-thumbnail = true;
+            audio-multistreams = true;
+            prefer-free-formats = true;
+            write-subs = true;
+            remux-video = "mkv";
+            embed-subs = true;
+            embed-thumbnail = true;
+            embed-metadata = true;
+            embed-chapters = true;
+            embed-info-json = true;
+            sponsorblock-mark = "all";
+          };
         };
       };
   };

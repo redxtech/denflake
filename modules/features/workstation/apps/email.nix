@@ -13,6 +13,7 @@
           "redxtech"
         ];
 
+        # TODO: add more settings
         settings = {
           "mail.openpgp.allow_external_gnupg" = true;
           "mail.compose.add_link_preview" = true;

@@ -41,6 +41,9 @@
       xdg.autostart.entries = [
         "${config.programs.nixcord.equibop.package}/share/applications/equibop.desktop"
       ];
+
+      # disable until i find a good theme
+      stylix.targets.nixcord.enable = false;
     };
 
   flake-file.inputs.nixcord = {
