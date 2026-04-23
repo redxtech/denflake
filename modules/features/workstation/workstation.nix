@@ -20,6 +20,7 @@
 
       den.aspects.spotify
       den.aspects.terminal
+      den.aspects.discord
       den.aspects.file-browser
       den.aspects.image-viewer
       den.aspects.video-player

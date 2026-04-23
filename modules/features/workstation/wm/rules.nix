@@ -14,6 +14,8 @@
           matches = [
             { app-id = "discord"; }
             { app-id = "vesktop"; }
+            { app-id = "equibop"; }
+            { app-id = "legcord"; }
           ];
           open-on-workspace = "chat";
           open-focused = false;

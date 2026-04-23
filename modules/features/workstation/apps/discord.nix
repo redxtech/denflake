@@ -1,0 +1,50 @@
+{ inputs, ... }:
+
+{
+  den.aspects.discord.homeManager =
+    { config, pkgs, ... }:
+    {
+      imports = [ inputs.nixcord.homeModules.nixcord ];
+
+      programs.nixcord = {
+        enable = true;
+        discord.enable = false; # don't use official discord client
+
+        # native equicord client
+        equibop = {
+          enable = true;
+          settings = {
+            discordBranch = "stable";
+            tray = true;
+            minimizeToTray = true;
+            arRPC = true;
+            trayColor = "";
+            trayMainOverride = false;
+            splashColor = "rgb(239, 239, 241)";
+          };
+        };
+
+        # lightweight client
+        legcord = {
+          enable = true;
+          equicord.enable = true;
+          vencord.enable = false;
+
+          settings = {
+            hardwareAcceleration = true;
+            minimizeToTray = true;
+            tray = "dynamic";
+          };
+        };
+      };
+
+      xdg.autostart.entries = [
+        "${config.programs.nixcord.equibop.package}/share/applications/equibop.desktop"
+      ];
+    };
+
+  flake-file.inputs.nixcord = {
+    url = "github:FlameFlag/nixcord";
+    inputs.nixpkgs.follows = "nixpkgs";
+  };
+}

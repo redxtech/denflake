@@ -13,7 +13,6 @@
         xdg.autostart = {
           enable = true;
           entries = with pkgs; [
-            "${vesktop}/share/applications/vesktop.desktop"
             # "${config.programs.spicetify.spicedSpotify}/share/applications/spotify.desktop"
           ];
         };
