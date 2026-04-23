@@ -23,6 +23,7 @@
       den.aspects.file-browser
       den.aspects.image-viewer
       den.aspects.video-player
+      den.aspects.misc-apps
 
       # include workstation-only sub-aspects
       den.aspects.editor._.for-workstation
@@ -33,7 +34,6 @@
     # feh
     # rofi
     # thunderbird
-    # zathura
     # playerctld
 
     # TODO: move to own aspect
