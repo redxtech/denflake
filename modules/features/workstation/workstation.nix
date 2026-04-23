@@ -18,7 +18,9 @@
       den.aspects.kde-connect
       den.aspects.monitors
       den.aspects.network
+      den.aspects.picker
       den.aspects.screenshot
+      den.aspects.scripts
       den.aspects.xdg
 
       # apps

@@ -8,6 +8,7 @@
     homeManager =
       {
         host,
+        config,
         pkgs,
         lib,
         ...
@@ -27,7 +28,8 @@
 
             xdg.dataFile =
               let
-                # wrapShell = command: "${lib.getExe pkgs.bash} -c '${command}'";
+                scripts = config.scripts.scripts;
+                wrapShell = command: "${lib.getExe pkgs.bash} -c '${command}'";
 
                 # https://github.com/linuxmint/nemo/blob/master/files/usr/share/nemo/actions/sample.nemo_action
                 actions = {
@@ -41,46 +43,46 @@
                     mimetypes = null;
                     terminal = false;
                   };
-                  # convert = {
-                  #   name = "Convert Image";
-                  #   description = "Converts an image to another format with ImageMagick";
-                  #   exec = "${scripts.rofi.convert} %F";
-                  #   icon = "image";
-                  #   selection = "s";
-                  #   extensions = null;
-                  #   mimetypes = "image/*";
-                  #   terminal = false;
-                  # };
-                  # archive = {
-                  #   name = "Create Archive";
-                  #   description = "Creates an archive with atool";
-                  #   exec = wrapShell "${scripts.rofi.archiver} %F";
-                  #   icon = "archive";
-                  #   selection = "notnone";
-                  #   extensions = "any";
-                  #   mimetypes = null;
-                  #   terminal = false;
-                  # };
-                  # unpack = {
-                  #   name = "Unpack Archive";
-                  #   description = "Unpacks an archive with atool";
-                  #   exec = "${scripts.general.unarchiver} %F";
-                  #   icon = "archive-extract";
-                  #   selection = "s";
-                  #   extensions = "gz;tgz;bz;tbz;bz2;tbz2;Z;tZ;lzo;tzo;lz;tlz;xz;txz;7z;t7z;tar;zip;jar;war;rar;lha;lhz;alz;ace;a;arj;arc;rpm;deb;cab;lzma;rz;lrz;cpio";
-                  #   mimetypes = null;
-                  #   terminal = false;
-                  # };
-                  # encode = {
-                  #   name = "Encode Video";
-                  #   description = "Encodes a video with ffmpeg";
-                  #   exec = "${scripts.rofi.encoder} %F";
-                  #   icon = "video";
-                  #   selection = "s";
-                  #   extensions = null;
-                  #   mimetypes = "video/*";
-                  #   terminal = false;
-                  # };
+                  convert = {
+                    name = "Convert Image";
+                    description = "Converts an image to another format with ImageMagick";
+                    exec = "${lib.getExe scripts.convert-image} %F";
+                    icon = "image";
+                    selection = "s";
+                    extensions = null;
+                    mimetypes = "image/*";
+                    terminal = false;
+                  };
+                  archive = {
+                    name = "Create Archive";
+                    description = "Creates an archive with atool";
+                    exec = wrapShell "${lib.getExe scripts.archiver} %F";
+                    icon = "archive";
+                    selection = "notnone";
+                    extensions = "any";
+                    mimetypes = null;
+                    terminal = false;
+                  };
+                  unpack = {
+                    name = "Unpack Archive";
+                    description = "Unpacks an archive with atool";
+                    exec = "${lib.getExe scripts.unarchiver} %F";
+                    icon = "archive-extract";
+                    selection = "s";
+                    extensions = "gz;tgz;bz;tbz;bz2;tbz2;Z;tZ;lzo;tzo;lz;tlz;xz;txz;7z;t7z;tar;zip;jar;war;rar;lha;lhz;alz;ace;a;arj;arc;rpm;deb;cab;lzma;rz;lrz;cpio";
+                    mimetypes = null;
+                    terminal = false;
+                  };
+                  encode = {
+                    name = "Encode Video";
+                    description = "Encodes a video with ffmpeg";
+                    exec = "${lib.getExe scripts.encoder} %F";
+                    icon = "video";
+                    selection = "s";
+                    extensions = null;
+                    mimetypes = "video/*";
+                    terminal = false;
+                  };
                   mediainfo = {
                     name = "Show Mediainfo";
                     description = "Shows a file's mediainfo";
@@ -151,8 +153,8 @@
 
               xdg.configFile."Thunar/uca.xml".text =
                 let
+                  scripts = config.scripts.scripts;
                   mediainfoCmd = "${termFloat} ${lib.getExe pkgs.fish} -c '${lib.getExe pkgs.mediainfo} %F; read -n 1 -p \"echo Press any key to continue...\"'";
-                  # scripts = cfg.wm.scripts;
 
                   mkAction =
                     {
@@ -229,40 +231,40 @@
                         "other-files"
                       ];
                     }
-                    # {
-                    #   name = "Encode video...";
-                    #   icon = "video-x-generic";
-                    #   id = "1654603048016562-1";
-                    #   command = "${scripts.rofi.encoder} %n";
-                    #   description = "Encode a video with selectable options.";
-                    #   append = [ "video-files" ];
-                    # }
-                    # {
-                    #   name = "Create archive...";
-                    #   icon = "archive";
-                    #   id = "1654596275298475-5";
-                    #   command = "${scripts.rofi.archiver} %N";
-                    #   description = "Compresses files with atool.";
-                    #   append = [
-                    #     "directories"
-                    #     "audio-files"
-                    #     "image-files"
-                    #     "other-files"
-                    #     "text-files"
-                    #     "video-files"
-                    #   ];
-                    # }
-                    # {
-                    #   name = "Unpack archive...";
-                    #   icon = "cm_extractfiles";
-                    #   id = "1654596052635533-4";
-                    #   command = "${scripts.general.unarchiver} %n";
-                    #   description = "Uses atool to unpack the selected files.";
-                    #   patterns = "*.gz;*.tgz;*.bz;*.tbz;*.bz2;*.tbz2;*.Z;*.tZ;*.lzo;*.tzo;*.lz;*.tlz;*.xz;*.txz;*.7z;*.t7z;*.tar;*.zip;*.jar;*.war;*.rar;*.lha;*.lhz;*.alz;*.ace;*.a;*.;*.arj;*.arc;*.rpm;*.deb;*.cab;*.lzma;*.rz;*.lrz;*.cpio";
-                    #   append = [
-                    #     "other-files"
-                    #   ];
-                    # }
+                    {
+                      name = "Encode video...";
+                      icon = "video-x-generic";
+                      id = "1654603048016562-1";
+                      command = "${lib.getExe scripts.encoder} %n";
+                      description = "Encode a video with selectable options.";
+                      append = [ "video-files" ];
+                    }
+                    {
+                      name = "Create archive...";
+                      icon = "archive";
+                      id = "1654596275298475-5";
+                      command = "${lib.getExe scripts.archiver} %N";
+                      description = "Compresses files with atool.";
+                      append = [
+                        "directories"
+                        "audio-files"
+                        "image-files"
+                        "other-files"
+                        "text-files"
+                        "video-files"
+                      ];
+                    }
+                    {
+                      name = "Unpack archive...";
+                      icon = "cm_extractfiles";
+                      id = "1654596052635533-4";
+                      command = "${lib.getExe scripts.unarchiver} %n";
+                      description = "Uses atool to unpack the selected files.";
+                      patterns = "*.gz;*.tgz;*.bz;*.tbz;*.bz2;*.tbz2;*.Z;*.tZ;*.lzo;*.tzo;*.lz;*.tlz;*.xz;*.txz;*.7z;*.t7z;*.tar;*.zip;*.jar;*.war;*.rar;*.lha;*.lhz;*.alz;*.ace;*.a;*.;*.arj;*.arc;*.rpm;*.deb;*.cab;*.lzma;*.rz;*.lrz;*.cpio";
+                      append = [
+                        "other-files"
+                      ];
+                    }
 
                     # TODO: fix this as well (not showing up on any files)
                     {
