@@ -21,6 +21,7 @@
       den.aspects.browser
       den.aspects.spotify
       den.aspects.discord
+      den.aspects.email
       den.aspects.file-browser
       den.aspects.image-viewer
       den.aspects.misc-apps
