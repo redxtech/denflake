@@ -7,7 +7,10 @@
       ...
     }:
     {
-      home.packages = with pkgs; [ qimgv ];
+      home.packages = with pkgs; [
+        qimgv # main image viewer
+        satty # image editor
+      ];
 
       xdg.configFile."qimgv/qimgv.conf".text = ''
         [General]

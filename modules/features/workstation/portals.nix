@@ -9,17 +9,22 @@
           xdgOpenUsePortal = true;
 
           extraPortals = with pkgs; [
-            gnome-keyring
+            xdg-desktop-portal-gnome
             xdg-desktop-portal-gtk
-            xdg-desktop-portal-luminous
+            gnome-keyring
           ];
 
-          config.common = {
-            preferred = [ "luminous" ];
-            default = [
-              "gtk"
-              "gnome"
-            ];
+          config = {
+            common = {
+              default = [
+                "gtk"
+                "gnome"
+              ];
+              "org.freedesktop.impl.portal.AppChooser" = [ "gtk" ];
+              "org.freedesktop.impl.portal.FileChooser" = [ "gtk" ];
+              "org.freedesktop.impl.portal.ScreenCast" = [ "gnome" ];
+              "org.freedesktop.impl.portal.Secret" = [ "gnome-keyring" ];
+            };
           };
         };
       };

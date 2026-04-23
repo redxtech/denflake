@@ -41,12 +41,6 @@
       { config, pkgs, ... }:
       {
         xdg.enable = true;
-
-        home.packages = with pkgs; [
-          # TODO: add more to here
-          satty # image editor
-          vesktop # discord client
-        ];
       };
   };
 }

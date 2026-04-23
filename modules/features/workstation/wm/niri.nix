@@ -25,9 +25,6 @@
         # disable flake cache, since we have it already enabled in this flake's nixConfig
         niri-flake.cache.enable = false;
 
-        # use nemo for file picker
-        xdg.portal.config.niri."org.freedesktop.impl.portal.FileChooser" = [ "gtk" ];
-
         # configure greetd to use niri
         services.greetd.settings.default_session.command =
           "${lib.getExe pkgs.tuigreet} --time --remember --cmd niri-session";
