@@ -15,8 +15,8 @@
       den.aspects.default-apps
       den.aspects.flatpak
       den.aspects.monitors
-      den.aspects.portals
       den.aspects.screenshot
+      den.aspects.xdg
 
       den.aspects.browser
       den.aspects.spotify
@@ -31,19 +31,5 @@
       # include workstation-only sub-aspects
       den.aspects.editor._.for-workstation
     ];
-
-    # TODO: add more apps
-
-    # feh
-    # rofi
-    # thunderbird
-    # playerctld
-
-    # TODO: move to own aspect
-    homeManager =
-      { config, pkgs, ... }:
-      {
-        xdg.enable = true;
-      };
   };
 }
