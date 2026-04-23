@@ -1,9 +1,4 @@
-{
-  inputs,
-  self,
-  den,
-  ...
-}:
+{ den, ... }:
 
 {
   den.aspects.cli = {
@@ -113,7 +108,6 @@
             # appimage-run
             atool # archive tools
             bitwarden-cli # password manager
-            # bluetuith # bluetooth
             cachix # nix cache
             # catdoc # word docs -> text
             comma # run nix commands with ,
@@ -165,7 +159,6 @@
             steam-run # run binaries in steam FHS
             # streamrip # download music
             sl # teehee
-            slurm-nm # network monitor
             tokei # code stats
             trashy # trash manager
             unrar # unarchiver

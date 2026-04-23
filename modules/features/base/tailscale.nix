@@ -1,18 +1,29 @@
-{ inputs, self, ... }:
-
 {
-  den.aspects.tailscale =
-    { host, ... }:
+  den.aspects.tailscale.nixos =
+    { config, lib, ... }:
     {
-      nixos =
-        { config, ... }:
+      services.tailscale =
+        let
+          flags = [
+            "--advertise-exit-node"
+            "--ssh"
+          ];
+        in
         {
-          services.tailscale = {
-            enable = true;
-            authKeyFile = config.sops.secrets.tailscale-init-authkey.path;
-          };
+          enable = true;
+          authKeyFile = config.sops.secrets.tailscale-init-authkey.path;
 
-          sops.secrets.tailscale-init-authkey = { };
+          openFirewall = true;
+          useRoutingFeatures = lib.mkDefault "both";
+          extraUpFlags = flags;
+          extraSetFlags = flags;
         };
+      # firewall for tailscale
+      networking.firewall = {
+        checkReversePath = "loose";
+        allowedUDPPorts = [ 41641 ]; # Facilitate firewall punching
+      };
+
+      sops.secrets.tailscale-init-authkey = { };
     };
 }

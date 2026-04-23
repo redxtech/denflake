@@ -12,12 +12,16 @@
       den.aspects.audio
       den.aspects.autostart
       den.aspects.bar
+      den.aspects.bluetooth
       den.aspects.default-apps
       den.aspects.flatpak
+      den.aspects.kde-connect
       den.aspects.monitors
+      den.aspects.network
       den.aspects.screenshot
       den.aspects.xdg
 
+      # apps
       den.aspects.browser
       den.aspects.spotify
       den.aspects.discord
