@@ -124,9 +124,13 @@
               kittyFloat = cmd: "${lib.getExe config.programs.kitty.package} --class kitty_float -e ${cmd}";
             in
             {
-              bar = barWithoutStylix;
+              bar = barWithoutStylix // {
+                backgroundOpacity = lib.mkForce 0.9;
+              };
               general = exported.general;
-              ui = uiWithoutStylix;
+              ui = uiWithoutStylix // {
+                panelBackgroundOpacity = lib.mkForce 0.9;
+              };
               location = exported.location;
               calendar = exported.calendar;
               wallpaper = exported.wallpaper;

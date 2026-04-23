@@ -38,17 +38,21 @@
           open-floating = true;
         }
 
-        # TODO: add rules for opacity & blur
         {
-          matches = [
-            { app-id = "nemo"; }
-            { app-id = "thunar"; }
-            { app-id = "nautilus"; }
-            { app-id = "dolphin"; }
-            { is-focused = false; }
-          ];
+          matches =
+            let
+              match = app-id: {
+                inherit app-id;
+                is-focused = false;
+              };
+            in
+            map match [
+              "nemo"
+              "thunar"
+              "nautilus"
+              "dolphin"
+            ];
           opacity = 0.9;
-          # background-effect.blur = true;
         }
 
         # noctalia-shell settings
@@ -100,7 +104,7 @@
 
       layer-rules = [
         {
-          matches = [ { namespace = "^quickshell$"; } ];
+          matches = [ { namespace = "^noctalia-overview*"; } ];
           place-within-backdrop = true;
         }
       ];

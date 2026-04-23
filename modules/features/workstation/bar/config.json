@@ -14,8 +14,8 @@
 			"contentPadding": 2,
 			"fontScale": 1,
 			"enableExclusionZoneInset": true,
-			"backgroundOpacity": 0.93,
-			"useSeparateOpacity": false,
+			"backgroundOpacity": 0.9,
+			"useSeparateOpacity": true,
 			"marginVertical": 4,
 			"marginHorizontal": 4,
 			"frameThickness": 8,
@@ -30,6 +30,7 @@
 				"left": [
 					{
 						"colorizeSystemIcon": "none",
+						"colorizeSystemText": "none",
 						"customIconPath": "",
 						"enableColorization": false,
 						"icon": "rocket",
@@ -44,6 +45,7 @@
 						"maxWidth": 145,
 						"scrollingMode": "hover",
 						"showIcon": true,
+						"showText": true,
 						"textColor": "none",
 						"useFixedWidth": false
 					},
@@ -62,6 +64,16 @@
 						"textColor": "none",
 						"useFixedWidth": false,
 						"visualizerType": "wave"
+					},
+					{
+						"defaultSettings": {
+							"customColor": "none",
+							"showConditionIcon": true,
+							"showTempUnit": true,
+							"showTempValue": true,
+							"tooltipOption": "everything"
+						},
+						"id": "plugin:weather-indicator"
 					},
 					{
 						"defaultSettings": {
@@ -335,16 +347,17 @@
 			"tooltipsEnabled": true,
 			"scrollbarAlwaysVisible": true,
 			"boxBorderEnabled": true,
-			"panelBackgroundOpacity": 0.93,
+			"panelBackgroundOpacity": 0.9,
 			"translucentWidgets": false,
 			"panelsAttachedToBar": true,
 			"settingsPanelMode": "window",
 			"settingsPanelSideBarCardStyle": false
 		},
 		"location": {
-			"name": "victoria, bc",
+			"name": "Victoria",
 			"weatherEnabled": true,
 			"weatherShowEffects": true,
+			"weatherTaliaMascotAlways": false,
 			"useFahrenheit": false,
 			"use12hourFormat": false,
 			"showWeekNumberInCalendar": false,
@@ -353,7 +366,8 @@
 			"analogClockInCalendar": false,
 			"firstDayOfWeek": -1,
 			"hideWeatherTimezone": false,
-			"hideWeatherCityName": false
+			"hideWeatherCityName": false,
+			"autoLocate": true
 		},
 		"calendar": {
 			"cards": [
@@ -373,13 +387,14 @@
 		},
 		"wallpaper": {
 			"enabled": true,
-			"overviewEnabled": false,
+			"overviewEnabled": true,
 			"directory": "/home/gabe/Pictures/Wallpaper",
 			"monitorDirectories": [],
 			"enableMultiMonitorDirectories": false,
 			"showHiddenFiles": false,
 			"viewMode": "single",
 			"setWallpaperOnAllMonitors": true,
+			"linkLightAndDarkWallpapers": true,
 			"fillMode": "crop",
 			"fillColor": "#000000",
 			"useSolidColor": false,
@@ -401,7 +416,7 @@
 			"panelPosition": "follow_bar",
 			"hideWallpaperFilenames": false,
 			"useOriginalImages": true,
-			"overviewBlur": 0.4,
+			"overviewBlur": 1,
 			"overviewTint": 0.6,
 			"useWallhaven": false,
 			"wallhavenQuery": "",
@@ -536,7 +551,7 @@
 			"position": "bottom",
 			"displayMode": "auto_hide",
 			"dockType": "floating",
-			"backgroundOpacity": 0.66,
+			"backgroundOpacity": 1,
 			"floatingRatio": 1,
 			"size": 1.25,
 			"onlySameOutput": true,
@@ -563,7 +578,6 @@
 			"indicatorOpacity": 0.6
 		},
 		"network": {
-			"airplaneModeEnabled": false,
 			"bluetoothRssiPollingEnabled": false,
 			"bluetoothRssiPollIntervalMs": 60000,
 			"networkPanelView": "wifi",

@@ -23,6 +23,7 @@
                 size = toString fonts.sizes.terminal;
               in
               lib.mkForce "${fonts.monospace.name}:size=${size}, Symbols Nerd Font:size=${size}";
+            colors-dark.alpha-mode = "matching";
             scrollback.lines = 10000;
             cursor = {
               style = "beam";

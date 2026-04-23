@@ -8,26 +8,29 @@
     ];
 
     nixos =
-      { inputs', pkgs, ... }:
+      {
+        inputs',
+        pkgs,
+        lib,
+        ...
+      }:
       {
         imports = [ inputs.niri.nixosModules.niri ];
 
         programs.niri = {
           enable = true;
-          package = inputs'.niri.packages.niri-unstable;
+          package = inputs'.niri-pkgs.packages.niri-unstable;
         };
 
         # disable flake cache, since we have it already enabled in this flake's nixConfig
         niri-flake.cache.enable = false;
 
         # use nemo for file picker
-        xdg.portal.config.niri = {
-          "org.freedesktop.impl.portal.FileChooser" = [ "gtk" ];
-        };
+        xdg.portal.config.niri."org.freedesktop.impl.portal.FileChooser" = [ "gtk" ];
 
         # configure greetd to use niri
         services.greetd.settings.default_session.command =
-          "${pkgs.tuigreet}/bin/tuigreet --time --remember --cmd niri-session";
+          "${lib.getExe pkgs.tuigreet} --time --remember --cmd niri-session";
 
         # disable kde polkit agent, since we're using noctalia-shell's
         systemd.user.services.niri-flake-polkit.enable = false;
@@ -53,25 +56,18 @@
       {
         programs.niri =
           let
-            noctalia =
-              cmd:
-              [
-                "noctalia-shell"
-                "ipc"
-                "call"
-              ]
-              ++ (lib.splitString " " cmd);
-
-            niriPkgs = inputs'.niri.packages;
+            niriPkgs = inputs'.niri-pkgs.packages;
           in
           {
             settings = {
+              # only availbe with niri-flake/very-refactor branch
+              includes = lib.mkAfter [ (./blur.kdl) ];
+
               xwayland-satellite.path = lib.getExe niriPkgs.xwayland-satellite-unstable;
 
               prefer-no-csd = true; # prefer no client side decorations
               screenshot-path = "${config.xdg.userDirs.pictures}/screenshots/%Y/%Y-%m-%d_%H-%M-%S.png";
               hotkey-overlay.skip-at-startup = true;
-              gestures.hot-corners.enable = false;
 
               input = {
                 focus-follows-mouse.enable = true;
@@ -95,16 +91,6 @@
 
               animations.slowdown = 0.75;
               animations.screenshot-ui-open.enable = false;
-              overview.backdrop-color = config.lib.stylix.colors.withHashtag.base00;
-
-              # TODO: wait until PR is merged and flake options are updated (https://github.com/sodiboo/niri-flake/pull/1548)
-
-              # blur = {
-              #   passes = 3;
-              #   offset = 3.0;
-              #   noise = 0.02;
-              #   saturation = 1.5;
-              # };
 
               layout = {
                 gaps = 10;
@@ -180,13 +166,22 @@
       };
   };
 
-  flake-file.inputs.niri = {
-    url = "github:sodiboo/niri-flake";
-    inputs.nixpkgs.follows = "nixpkgs";
-  };
+  # TODO: remove niri-pkgs inputs once the very-refactor branch is merged
+  # https://github.com/sodiboo/niri-flake/pull/1548
 
-  flake-file.nixConfig = {
-    extra-substituters = [ "https://niri.cachix.org" ];
-    extra-trusted-public-keys = [ "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964=" ];
+  flake-file = {
+    inputs = {
+      # using this branch to use unmerged config options
+      niri.url = "github:sodiboo/niri-flake/very-refactor";
+      niri.inputs.nixpkgs.follows = "nixpkgs";
+      # just for the niri-unstable packages
+      niri-pkgs.url = "github:sodiboo/niri-flake";
+      niri-pkgs.inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nixConfig = {
+      extra-substituters = [ "https://niri.cachix.org" ];
+      extra-trusted-public-keys = [ "niri.cachix.org-1:Wv0OmO7PsuocRKzfDoJ3mulSl7Z6oezYhGhR+3W2964=" ];
+    };
   };
 }
