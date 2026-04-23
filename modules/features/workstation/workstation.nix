@@ -18,13 +18,14 @@
       den.aspects.portals
       den.aspects.screenshot
 
+      den.aspects.browser
       den.aspects.spotify
-      den.aspects.terminal
       den.aspects.discord
       den.aspects.file-browser
       den.aspects.image-viewer
-      den.aspects.video-player
       den.aspects.misc-apps
+      den.aspects.terminal
+      den.aspects.video-player
 
       # include workstation-only sub-aspects
       den.aspects.editor._.for-workstation
