@@ -29,7 +29,7 @@
               goToSong
               groupSession
               hidePodcasts
-              # lastfm # TODO: re-enable when resolved https://github.com/Gerg-L/spicetify-nix/issues/356
+              lastfm
               # oldSidebar
               playingSource
               playlistIcons
