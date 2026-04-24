@@ -1,15 +1,29 @@
-{
-  inputs,
-  self,
-  den,
-  ...
-}:
+{ den, ... }:
 
 {
-  den.hosts.x86_64-linux.neobastion.users.gabe = { };
+  den.hosts.x86_64-linux.neobastion = {
+    users.gabe = { };
+
+    settings = {
+      base.hasDisplay = true;
+
+      monitors = {
+        enable = true;
+        monitors = [ ];
+      };
+
+      audio.devices = [ ];
+    };
+  };
 
   den.aspects.neobastion = {
-    includes = [ den.aspects.workstation ];
+    includes = [
+      den.aspects.workstation
+      den.aspects.gpu
+
+      # until no longer on a VM
+      den.aspects.vm
+    ];
 
     nixos =
       { pkgs, ... }:
