@@ -258,6 +258,7 @@
         programs.bat.enable = true;
         programs.bash.enable = true;
         programs.fd.enable = true;
+        programs.home-manager.enable = true;
         programs.htop.enable = true;
         programs.jq.enable = true;
         programs.ripgrep.enable = true;

@@ -2,7 +2,12 @@
 
 {
   den.aspects.discord.homeManager =
-    { config, pkgs, ... }:
+    {
+      config,
+      pkgs,
+      lib,
+      ...
+    }:
     {
       imports = [ inputs.nixcord.homeModules.nixcord ];
 
@@ -37,6 +42,10 @@
           };
         };
       };
+
+      # disable generating settings file until i make my own
+      home.file."${config.programs.nixcord.equibop.configDir}/settings/settings.json".enable =
+        lib.mkForce false;
 
       xdg.autostart.entries = [
         "${config.programs.nixcord.equibop.package}/share/applications/equibop.desktop"

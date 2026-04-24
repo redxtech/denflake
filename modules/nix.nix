@@ -48,19 +48,22 @@
       nixos = {
         inherit (cfg) nix nixpkgs;
 
-        # nix helper tool
-        programs.nh = {
-          enable = true;
-          flake = "/home/gabe/Code/nixfiles";
-          clean = {
-            enable = true;
-            extraArgs = "--keep-since 4d --keep 3";
-          };
-        };
       };
 
-      homeManager = {
-        inherit (cfg) nix nixpkgs;
-      };
+      homeManager =
+        { config, ... }:
+        {
+          inherit (cfg) nix nixpkgs;
+
+          # nix helper tool
+          programs.nh = {
+            enable = true;
+            flake = "${config.home.homeDirectory}/Code/nixfiles";
+            clean = {
+              enable = true;
+              extraArgs = "--keep-since 4d --keep 3";
+            };
+          };
+        };
     };
 }
